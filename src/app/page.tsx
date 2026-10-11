@@ -171,7 +171,7 @@ export default function Home() {
             <div className="art-chip chip-top"><span className="chip-dot" />Phone care</div>
             <div className="art-chip chip-bottom"><span className="chip-cross">+</span>Technical support</div>
           </div>
-          <a className="hero-scroll" href="#services"><span /> Explore what we do</a>
+          <a className="hero-scroll" href="#services">Explore what we do</a>
         </section>
 
         <section className="services-section section-wrap" id="services" aria-labelledby="services-title">
