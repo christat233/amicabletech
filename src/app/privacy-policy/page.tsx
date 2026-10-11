@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
       <p>Do not include passwords, account verification codes, or other authentication secrets in an enquiry. The site does not intentionally ask for them.</p>
 
       <h2>Website technologies and security</h2>
-      <p>The application source reviewed for this policy contains no analytics or advertising tags, embedded third-party widgets, consent manager, or use of browser cookies, local storage, or session storage. The site links to WhatsApp, Google Maps, telephone, and email services, which may process data after you choose to use them. Hosting and infrastructure logs are controlled by the deployment provider and are not described here because the live hosting configuration has not been verified.</p>
+      <p>The application source reviewed for this policy contains no analytics or advertising tags, embedded third-party widgets, or use of browser cookies. The site uses local storage only to remember that a visitor dismissed the cookie notice; see the <a href="/cookies-policy">Cookies Policy</a>. The site links to WhatsApp, Google Maps, telephone, and email services, which may process data after you choose to use them. Hosting and infrastructure logs are controlled by the deployment provider and are not described here because the live hosting configuration has not been verified.</p>
       <p>Reasonable technical safeguards should be used to protect information handled by the business. No website or communication channel can be described as completely secure.</p>
 
       <h2>Your questions or privacy requests</h2>

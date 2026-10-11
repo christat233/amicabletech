@@ -6,7 +6,6 @@ import { generalMessage, whatsappLink } from "./site-content";
 
 const services = [
   {
-    number: "01",
     icon: "repair",
     title: "Phone Repairs & Maintenance",
     description:
@@ -15,7 +14,6 @@ const services = [
       "Hello Amicable Tech, I’m enquiring about phone repairs or maintenance. I can share my phone model and describe the issue. Please let me know what service may be suitable.",
   },
   {
-    number: "02",
     icon: "software",
     title: "Phone Software Solutions",
     description:
@@ -24,7 +22,6 @@ const services = [
       "Hello Amicable Tech, I’m enquiring about phone software support. I can share my phone model and explain the software issue. Please let me know what details you need.",
   },
   {
-    number: "03",
     icon: "remote",
     title: "Remote Unlocking",
     description:
@@ -33,7 +30,6 @@ const services = [
       "Hello Amicable Tech, I’m enquiring about remote unlocking. I can share my phone model and lock details. Please assess whether it is eligible.",
   },
   {
-    number: "04",
     icon: "network",
     title: "SIM & Network Unlocking",
     description:
@@ -42,13 +38,20 @@ const services = [
       "Hello Amicable Tech, I’m enquiring about SIM or network unlocking. I can share my phone model, carrier if known, and lock details. Please check eligibility.",
   },
   {
-    number: "05",
     icon: "technical",
     title: "Phone Diagnostics & Support",
     description:
       "Get help understanding a phone fault and the support options that may suit your device.",
     message:
       "Hello Amicable Tech, I’m enquiring about phone diagnostics and support. I can share my phone model and describe the issue. Please let me know what information you need to assess it.",
+  },
+  {
+    icon: "activation",
+    title: "Box/Dongle Activation or Renewal",
+    description:
+      "Ask about activating or renewing a phone service box or dongle. Share the product name so we can review your options.",
+    message:
+      "Hello Amicable Tech, I’m enquiring about Box/Dongle Activation or Renewal. I can share the product name and activation or renewal details. Please let me know the available options.",
   },
 ] as const;
 
@@ -119,6 +122,7 @@ function LineIcon({ name }: { name: (typeof services)[number]["icon"] }) {
     remote: <><rect x="7" y="3" width="10" height="18" rx="2" /><path d="M10 6h4m-3 11h2M3.5 8.5a5 5 0 0 1 0 7m17-7a5 5 0 0 0 0 7M1 6a8.5 8.5 0 0 1 0 12m22-12a8.5 8.5 0 0 0 0 12" /></>,
     network: <><path d="M12 21s7-5 7-11V5l-7-3-7 3v5c0 6 7 11 7 11Z" /><path d="M9 12h6m-3-3v6" /></>,
     technical: <><rect x="5" y="3" width="11" height="18" rx="2" /><path d="M8 6h5m-4 12h3m2-5 2 2 4-5" /><circle cx="18" cy="9" r="3" /></>,
+    activation: <><rect x="3" y="7" width="13" height="10" rx="2" /><path d="M16 10h3l2 2v3h-5M7 17v2m8-2v2M6 10h7m-3.5-3v6" /><circle cx="18.5" cy="15" r=".5" fill="currentColor" /></>,
   };
 
   return <svg {...common} viewBox="0 0 24 24">{paths[name]}</svg>;
@@ -185,8 +189,8 @@ export default function Home() {
           </div>
           <div className="service-grid">
             {services.map((service) => (
-              <article className="service-card" key={service.number}>
-                <div className="service-card-top"><span className="service-icon"><LineIcon name={service.icon} /></span><span className="service-number">{service.number}</span></div>
+              <article className="service-card" key={service.title}>
+                <div className="service-card-top"><span className="service-icon"><LineIcon name={service.icon} /></span></div>
                 <h3>{service.title}</h3><p>{service.description}</p>
                 <a className="text-link" href={whatsappLink(service.message)} target="_blank" rel="noopener noreferrer" aria-label={`Enquire about ${service.title} on WhatsApp`}>Enquire about this <ArrowIcon /></a>
               </article>
@@ -199,7 +203,7 @@ export default function Home() {
           <div className="section-wrap process-inner">
             <div className="process-intro"><p className="eyebrow eyebrow-light">How it works</p><h2 id="process-title">A clear path from<br />question to support.</h2><p>Every phone and situation is different. We start by understanding yours.</p><a className="button button-white" href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer">Start a conversation <ArrowIcon /></a></div>
             <div className="steps-list">
-              {steps.map((step) => <article className="step" key={step.number}><span className="step-number">{step.number}</span><div><h3>{step.title}</h3><p>{step.description}</p></div><span className="step-arrow" aria-hidden="true"><ArrowIcon /></span></article>)}
+              {steps.map((step) => <article className="step" key={step.number}><span className="step-number">{step.number}</span><div><h3>{step.title}</h3><p>{step.description}</p></div></article>)}
             </div>
           </div>
         </section>
@@ -232,7 +236,7 @@ export default function Home() {
             <a href="#services">Services</a><a href="#process">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
           </nav>
           <nav className="footer-policies" aria-label="Legal and privacy">
-            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link><Link href="/cookies-policy">Cookies Policy</Link>
           </nav>
           <p className="footer-legal">© {new Date().getFullYear()} AMICABLE TECH. All rights reserved. <span>Uyo, Akwa Ibom State, Nigeria</span></p>
           <p className="footer-credit">Powered by EloTech Resources</p>
