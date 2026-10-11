@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import MobileNavigation from "./mobile-navigation";
+import BackToTop from "./back-to-top";
 import { generalMessage, whatsappLink } from "./site-content";
 
 const services = [
@@ -150,7 +151,7 @@ export default function Home() {
       <main id="main">
         <section className="hero section-wrap" id="top" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow"><span className="eyebrow-mark" /> Phone support, made clear</p>
+            <p className="eyebrow">Phone support, made clear</p>
             <h1 id="hero-title">Thoughtful technical support for your <span>phone.</span></h1>
             <p className="hero-description">From phone repairs and software support to unlocking enquiries, AMICABLE TECH helps you understand the next step for your device.</p>
             <div className="hero-actions">
@@ -166,7 +167,7 @@ export default function Home() {
             <div className="art-logo-frame">
               <Image src="/brand/amicable-tech-logo.jpeg" alt="AMICABLE TECH — Professional Solutions. Trusted Service." width={1254} height={1254} priority className="art-logo" />
             </div>
-            <div className="art-caption"><span className="caption-rule" />Professional solutions. Trusted service.</div>
+            <div className="art-caption">Professional solutions. Trusted service.</div>
             <div className="art-chip chip-top"><span className="chip-dot" />Phone care</div>
             <div className="art-chip chip-bottom"><span className="chip-cross">+</span>Technical support</div>
           </div>
@@ -226,9 +227,14 @@ export default function Home() {
           <nav aria-label="Footer navigation">
             <a href="#services">Services</a><a href="#process">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
           </nav>
+          <nav className="footer-policies" aria-label="Legal and privacy">
+            <Link href="/privacy-policy">Privacy Policy</Link>
+          </nav>
           <p className="footer-legal">© {new Date().getFullYear()} AMICABLE TECH. All rights reserved. <span>Uyo, Akwa Ibom State, Nigeria</span></p>
+          <p className="footer-credit">Powered by EloTech Resources</p>
         </div>
       </footer>
+      <BackToTop />
     </>
   );
 }
