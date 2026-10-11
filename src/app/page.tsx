@@ -178,7 +178,7 @@ export default function Home() {
           <a className="hero-scroll" href="#services">Explore what we do</a>
         </section>
 
-        <section className="services-section section-wrap" id="services" aria-labelledby="services-title">
+        <section className="services-section" id="services" aria-labelledby="services-title">
           <div className="section-heading split-heading">
             <div><p className="eyebrow">Services</p><h2 id="services-title">The right support<br />starts with a conversation.</h2></div>
             <p>Tell us what your phone needs. We’ll review the details and confirm whether a service is suitable for your device.</p>
