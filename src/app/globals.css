@@ -148,7 +148,9 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .detail-label { color: #4d5f52; font-size: 0.75rem; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; }
 .contact-detail a { min-width: 0; color: var(--ink); font-size: 0.9rem; font-weight: 650; overflow-wrap: anywhere; text-decoration: none; }
 .contact-detail a:hover { color: var(--brand); text-decoration: underline; }
-.external-mark { display: inline-block; margin-left: 0.2rem; color: var(--brand); font-size: 0.78rem; }
+.contact-link-content { display: inline-flex; max-width: 100%; align-items: baseline; gap: .35rem; }
+.contact-link-text { min-width: 0; overflow-wrap: anywhere; }
+.contact-link-content svg { width: .85rem; height: .85rem; flex: 0 0 .85rem; transform: translateY(1px); color: var(--brand); }
 .site-footer { border-top: 1px solid #e7ece8; background: #fff; color: #46524a; }
 .footer-inner { display: grid; min-height: 132px; grid-template-columns: 1fr auto; align-content: center; align-items: center; gap: 0.7rem 2rem; padding-block: 1.25rem; }
 .footer-brand { text-decoration: none; }

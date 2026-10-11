@@ -128,6 +128,10 @@ function ArrowIcon() {
   return <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 }
 
+function ExternalLinkIcon() {
+  return <svg aria-hidden="true" focusable="false" viewBox="0 0 20 20" fill="none"><path d="M11 4h5v5m-.5-4.5L9 11m2-5H6.5A1.5 1.5 0 0 0 5 7.5v7A1.5 1.5 0 0 0 6.5 16h7a1.5 1.5 0 0 0 1.5-1.5V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+}
+
 export default function Home() {
   return (
     <>
@@ -209,10 +213,10 @@ export default function Home() {
           <div className="section-wrap contact-inner">
             <div className="contact-copy"><p className="eyebrow eyebrow-light">Contact</p><h2 id="contact-title">Let’s talk about<br />your device.</h2><p>Share your phone model and the issue you’re experiencing. We’ll help you understand the next step.</p><a className="button button-green" href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer">Start a WhatsApp enquiry <ArrowIcon /></a><p className="contact-note">WhatsApp opens with a draft message for you to review and send.</p></div>
             <div className="contact-details">
-              <div className="contact-detail"><span className="detail-label">Visit</span><a href="https://www.google.com/maps/search/?api=1&query=No.%202%20Wellington%20Bassey%20Way%2C%20Uyo%2C%20Akwa%20Ibom%20State%2C%20Nigeria" target="_blank" rel="noopener noreferrer">No. 2 Wellington Bassey Way<br />Uyo, Akwa Ibom State, Nigeria <span className="external-mark" aria-hidden="true">↗</span></a></div>
+              <div className="contact-detail"><span className="detail-label">Visit</span><a className="contact-address" href="https://maps.app.goo.gl/tvxY58BSdRRcTCKc8?g_st=awb" target="_blank" rel="noopener noreferrer"><span className="contact-link-content"><span className="contact-link-text">No. 2 Wellington Bassey Way<br />Uyo, Akwa Ibom State, Nigeria</span><ExternalLinkIcon /></span></a></div>
               <div className="contact-detail"><span className="detail-label">Phone</span><a href="tel:+2347018727534">+234 701 872 7534</a></div>
-              <div className="contact-detail"><span className="detail-label">WhatsApp</span><a href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer">Send an enquiry <span className="external-mark" aria-hidden="true">↗</span></a></div>
-              <div className="contact-detail"><span className="detail-label">Email</span><a href="mailto:amicabletechempire@gmail.com">amicabletechempire@gmail.com <span className="external-mark" aria-hidden="true">↗</span></a></div>
+              <div className="contact-detail"><span className="detail-label">WhatsApp</span><a href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer"><span className="contact-link-content"><span className="contact-link-text">Send an enquiry</span><ExternalLinkIcon /></span></a></div>
+              <div className="contact-detail"><span className="detail-label">Email</span><a href="mailto:amicabletechempire@gmail.com"><span className="contact-link-content"><span className="contact-link-text">amicabletechempire@gmail.com</span><ExternalLinkIcon /></span></a></div>
             </div>
           </div>
         </section>
