@@ -1,13 +1,7 @@
 import Image from "next/image";
-
-const whatsappNumber = "2347018727534";
-
-function whatsappLink(message: string) {
-  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-}
-
-const generalMessage =
-  "Hello Amicable Tech, I would like to enquire about your phone technical support. I can share my phone model, the issue, and any relevant service details. Please let me know what information you need.";
+import Link from "next/link";
+import MobileNavigation from "./mobile-navigation";
+import { generalMessage, whatsappLink } from "./site-content";
 
 const services = [
   {
@@ -17,7 +11,7 @@ const services = [
     description:
       "Get help assessing a phone fault and discussing suitable repair or maintenance options for your device.",
     message:
-      "Hello Amicable Tech, I’m enquiring about phone repairs or maintenance. My phone model is [model], and the issue is [describe issue]. Please let me know what service may be suitable.",
+      "Hello Amicable Tech, I’m enquiring about phone repairs or maintenance. I can share my phone model and describe the issue. Please let me know what service may be suitable.",
   },
   {
     number: "02",
@@ -26,7 +20,7 @@ const services = [
     description:
       "Discuss software-related phone issues and available support based on your device and its condition.",
     message:
-      "Hello Amicable Tech, I’m enquiring about phone software support. My phone model is [model], and the software issue is [describe issue]. Please let me know what details you need.",
+      "Hello Amicable Tech, I’m enquiring about phone software support. I can share my phone model and explain the software issue. Please let me know what details you need.",
   },
   {
     number: "03",
@@ -35,7 +29,7 @@ const services = [
     description:
       "Ask whether remote unlocking support is available for your specific device and situation.",
     message:
-      "Hello Amicable Tech, I’m enquiring about remote unlocking. My phone model is [model], and the lock or issue is [describe details]. Please assess whether it is eligible.",
+      "Hello Amicable Tech, I’m enquiring about remote unlocking. I can share my phone model and lock details. Please assess whether it is eligible.",
   },
   {
     number: "04",
@@ -44,16 +38,16 @@ const services = [
     description:
       "Check network unlocking eligibility for your phone, carrier, and current lock status.",
     message:
-      "Hello Amicable Tech, I’m enquiring about SIM or network unlocking. My phone model is [model], the carrier is [carrier if known], and the issue is [describe details]. Please check eligibility.",
+      "Hello Amicable Tech, I’m enquiring about SIM or network unlocking. I can share my phone model, carrier if known, and lock details. Please check eligibility.",
   },
   {
     number: "05",
     icon: "technical",
-    title: "Advanced Technical Services",
+    title: "Phone Diagnostics & Support",
     description:
-      "Describe your technical issue so the team can confirm whether a suitable service is available.",
+      "Get help understanding a phone fault and the support options that may suit your device.",
     message:
-      "Hello Amicable Tech, I have an advanced phone technical enquiry. My phone model is [model], and the issue and relevant details are [describe here]. Please let me know if you can assess it.",
+      "Hello Amicable Tech, I’m enquiring about phone diagnostics and support. I can share my phone model and describe the issue. Please let me know what information you need to assess it.",
   },
 ] as const;
 
@@ -123,7 +117,7 @@ function LineIcon({ name }: { name: (typeof services)[number]["icon"] }) {
     software: <><rect x="3" y="4" width="18" height="15" rx="2" /><path d="M8 9 6 11l2 2m8-4 2 2-2 2m-3-5-2 6m-7 3h18" /></>,
     remote: <><rect x="7" y="3" width="10" height="18" rx="2" /><path d="M10 6h4m-3 11h2M3.5 8.5a5 5 0 0 1 0 7m17-7a5 5 0 0 0 0 7M1 6a8.5 8.5 0 0 1 0 12m22-12a8.5 8.5 0 0 0 0 12" /></>,
     network: <><path d="M12 21s7-5 7-11V5l-7-3-7 3v5c0 6 7 11 7 11Z" /><path d="M9 12h6m-3-3v6" /></>,
-    technical: <><path d="M14.5 6.5a4 4 0 0 0-5-5l2.3 2.3-3 3-2.3-2.3a4 4 0 0 0 5 5L19 17l-3 3-7.5-7.5" /><circle cx="18" cy="6" r="2.5" /></>,
+    technical: <><rect x="5" y="3" width="11" height="18" rx="2" /><path d="M8 6h5m-4 12h3m2-5 2 2 4-5" /><circle cx="18" cy="9" r="3" /></>,
   };
 
   return <svg {...common} viewBox="0 0 24 24">{paths[name]}</svg>;
@@ -139,23 +133,17 @@ export default function Home() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="site-header">
         <div className="header-inner">
-          <a className="brand-lockup" href="#top" aria-label="AMICABLE TECH home">
-            <Image src="/brand/amicable-tech-logo.jpeg" alt="" width={1254} height={1254} priority className="brand-logo" />
+          <Link className="brand-lockup" href="/" aria-label="AMICABLE TECH home">
+            <Image src="/brand/amicable-tech-icon.png" alt="" width={128} height={128} priority className="brand-logo" />
             <span className="brand-name">AMICABLE <span>TECH.</span></span>
-          </a>
+          </Link>
           <nav className="desktop-nav" aria-label="Main navigation">
             <a href="#services">Services</a><a href="#process">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
           </nav>
           <a className="button button-green header-cta" href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer" aria-label="Open a general enquiry in WhatsApp">
             Chat on WhatsApp <ArrowIcon />
           </a>
-          <details className="mobile-nav">
-            <summary aria-label="Open navigation menu"><span /><span /><span /></summary>
-            <nav aria-label="Mobile navigation">
-              <a href="#services">Services</a><a href="#process">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
-              <a className="mobile-menu-cta" href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer">Chat on WhatsApp <ArrowIcon /></a>
-            </nav>
-          </details>
+          <MobileNavigation />
         </div>
       </header>
 
@@ -171,9 +159,13 @@ export default function Home() {
             </div>
             <p className="hero-note"><span className="note-icon" aria-hidden="true">i</span> Share your model and issue. We’ll confirm what support may be suitable.</p>
           </div>
-          <div className="hero-art" aria-label="AMICABLE TECH logo and service overview">
-            <div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" />
-            <div className="art-logo-frame"><Image src="/brand/amicable-tech-logo.jpeg" alt="AMICABLE TECH logo" width={1254} height={1254} priority className="art-logo" /></div>
+          <div className="hero-art" role="img" aria-label="AMICABLE TECH logo framed by soft green circles">
+            <div className="art-orbit orbit-one" />
+            <div className="art-orbit orbit-two" />
+            <div className="art-orbit orbit-three" />
+            <div className="art-logo-frame">
+              <Image src="/brand/amicable-tech-logo.jpeg" alt="AMICABLE TECH — Professional Solutions. Trusted Service." width={1254} height={1254} priority className="art-logo" />
+            </div>
             <div className="art-caption"><span className="caption-rule" />Professional solutions. Trusted service.</div>
             <div className="art-chip chip-top"><span className="chip-dot" />Phone care</div>
             <div className="art-chip chip-bottom"><span className="chip-cross">+</span>Technical support</div>
@@ -214,17 +206,29 @@ export default function Home() {
 
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
           <div className="section-wrap contact-inner">
-            <div className="contact-copy"><p className="eyebrow eyebrow-light">Contact</p><h2 id="contact-title">Let’s find a way<br />forward for your phone.</h2><p>Share the details of your enquiry. We’ll confirm the available options with you.</p><a className="button button-white" href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer">Chat on WhatsApp <ArrowIcon /></a><p className="contact-note">WhatsApp opens with a draft message for you to review and send.</p></div>
+            <div className="contact-copy"><p className="eyebrow eyebrow-light">Contact</p><h2 id="contact-title">Let’s talk about<br />your device.</h2><p>Share your phone model and the issue you’re experiencing. We’ll help you understand the next step.</p><a className="button button-green" href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer">Start a WhatsApp enquiry <ArrowIcon /></a><p className="contact-note">WhatsApp opens with a draft message for you to review and send.</p></div>
             <div className="contact-details">
               <div className="contact-detail"><span className="detail-label">Visit</span><a href="https://www.google.com/maps/search/?api=1&query=No.%202%20Wellington%20Bassey%20Way%2C%20Uyo%2C%20Akwa%20Ibom%20State%2C%20Nigeria" target="_blank" rel="noopener noreferrer">No. 2 Wellington Bassey Way<br />Uyo, Akwa Ibom State, Nigeria <span className="external-mark" aria-hidden="true">↗</span></a></div>
-              <div className="contact-detail"><span className="detail-label">WhatsApp</span><a href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer">+234 701 872 7534 <span className="external-mark" aria-hidden="true">↗</span></a></div>
+              <div className="contact-detail"><span className="detail-label">Phone</span><a href="tel:+2347018727534">+234 701 872 7534</a></div>
+              <div className="contact-detail"><span className="detail-label">WhatsApp</span><a href={whatsappLink(generalMessage)} target="_blank" rel="noopener noreferrer">Send an enquiry <span className="external-mark" aria-hidden="true">↗</span></a></div>
               <div className="contact-detail"><span className="detail-label">Email</span><a href="mailto:amicabletechempire@gmail.com">amicabletechempire@gmail.com <span className="external-mark" aria-hidden="true">↗</span></a></div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="site-footer"><div className="section-wrap footer-inner"><a className="footer-brand" href="#top">AMICABLE <span>TECH.</span></a><nav aria-label="Footer navigation"><a href="#services">Services</a><a href="#process">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav><p>© {new Date().getFullYear()} AMICABLE TECH. All rights reserved.</p></div></footer>
+      <footer className="site-footer">
+        <div className="section-wrap footer-inner">
+          <div className="footer-brand-block">
+            <Link className="footer-brand" href="/">AMICABLE <span>TECH.</span></Link>
+            <p>Professional solutions. Trusted service.</p>
+          </div>
+          <nav aria-label="Footer navigation">
+            <a href="#services">Services</a><a href="#process">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+          </nav>
+          <p className="footer-legal">© {new Date().getFullYear()} AMICABLE TECH. All rights reserved. <span>Uyo, Akwa Ibom State, Nigeria</span></p>
+        </div>
+      </footer>
     </>
   );
 }
